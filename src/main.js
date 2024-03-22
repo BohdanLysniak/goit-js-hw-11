@@ -10,7 +10,7 @@ form.addEventListener("submit", sendForm);
 function sendForm(event) {
   event.preventDefault();
   const inputValue = event.target.elements.search.value.trim();
-  if (inputValue.lenght !== "") {
+  if (inputValue !== "") {
     getImage(inputValue);
   } else {
     iziToast.show({
