@@ -10,5 +10,10 @@ export function getImage(query) {
 
   const url = `${BASE_URL}?${params}`;
 
-  return fetch(url).then(res => res.json());
+  return fetch(url).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  })
 }
