@@ -4,27 +4,27 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import { card } from "./js/render-functions";
 export const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 export const hideLoader = () => {
-  loader.style.display = "none";
+// loader.style.display = "none";
 };
 
 const form = document.querySelector(".search-form");
-const loader = document.querySelector(".loader");
+const preloader = document.querySelector(".loader");
 
 form.addEventListener("submit", sendForm);
 
-loader.style.display = "none";
+// loader.style.display = "none";
 
-const showLoader = () => {
-  loader.style.display = "flex";
-};
+// const showLoader = () => {
+//   loader.style.display = "flex";
+// };
 
 function sendForm(event) {
   event.preventDefault();
-  showLoader();
+  card.innerHTML = "Pfuheprf";
   const inputValue = event.target.elements.search.value.trim();
-  
   if (inputValue !== "") {
     getImage(inputValue).then((resolve) => {
       renderImages(resolve.hits);
