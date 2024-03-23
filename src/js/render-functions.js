@@ -10,6 +10,7 @@ const card = document.querySelector(".gallery");
 export function renderImages(arr) {
   card.innerHTML = "";
   if (arr.length === 0) {
+    hideLoader();
     iziToast.error({
       message: 'Sorry, there are no images matching your search query. Please try again!',
       theme: 'dark',
