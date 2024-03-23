@@ -1,5 +1,5 @@
-import { card } from "../main";
 
+const card = document.querySelector(".gallery")
 export function renderImages(arr) {
   if (arr.length === 0) {
     iziToast.error({
