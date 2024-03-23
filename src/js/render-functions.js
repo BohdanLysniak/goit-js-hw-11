@@ -1,5 +1,9 @@
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
-const card = document.querySelector(".gallery")
+
+const card = document.querySelector(".gallery");
+
 export function renderImages(arr) {
   if (arr.length === 0) {
     iziToast.error({
@@ -10,16 +14,15 @@ export function renderImages(arr) {
       position: 'topRight',
     });
   } else {
-    const markup = arr.map((photo) => {
-      return `<li class="photos-list-item">
-  <a class="photos-list-link" href="${photo.largeImageURL}">
-  <img class="photo" src="${photo.webformatURL}" alt="${photo.tags}"/>
+    const markup = arr.map((image) => {
+      return `<a class="photos-list-link" href="${image.largeImageURL}">
+  <img class="photo" src="${image.webformatURL}" alt="${image.tags}"/>
   </a>
   <ul class="photo-information-container">
-  <li class="item-photo-information-container"><p><span class="accent">Likes</span></br>${photo.likes}</p></li>
-  <li class="item-photo-information-container"><p><span class="accent">Views</span></br>${photo.views}</p></li>
-  <li class="item-photo-information-container"><p><span class="accent">Comments</span></br>${photo.comments}</p></li>
-  <li class="item-photo-information-container"><p><span class="accent">Downloads</span></br>${photo.downloads}</p></li>
+  <li class="item-photo-information-container"><p><span class="accent">Likes</span>${image.likes}</p></li>
+  <li class="item-photo-information-container"><p><span class="accent">Views</span>${image.views}</p></li>
+  <li class="item-photo-information-container"><p><span class="accent">Comments</span>${image.comments}</p></li>
+  <li class="item-photo-information-container"><p><span class="accent">Downloads</span>${image.downloads}</p></li>
   </ul>
   </li>`;
     })
