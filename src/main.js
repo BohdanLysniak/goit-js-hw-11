@@ -4,8 +4,8 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import 
 
+export const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250 });
 
 const form = document.querySelector(".search-form");
 
@@ -30,4 +30,4 @@ function sendForm(event) {
   };
 };
 
-const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250 });
+

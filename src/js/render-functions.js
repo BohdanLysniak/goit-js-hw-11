@@ -1,10 +1,13 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import { lightbox } from "../main";
+
 
 
 const card = document.querySelector(".gallery");
 
 export function renderImages(arr) {
+  card.innerHTML = "";
   if (arr.length === 0) {
     iziToast.error({
       message: 'Sorry, there are no images matching your search query. Please try again!',
@@ -28,5 +31,7 @@ export function renderImages(arr) {
     })
       .join("");
     card.insertAdjacentHTML("beforeend", markup);
+
+    lightbox.refresh();
   };
 };
