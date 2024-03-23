@@ -5,7 +5,6 @@ import "izitoast/dist/css/iziToast.min.css";
 
 
 const form = document.querySelector(".search-form")
-export const card = document.querySelector(".gallery");
 
 form.addEventListener("submit", sendForm);
 
