@@ -6,28 +6,22 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { card } from "./js/render-functions";
 export const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
-export const hideLoader = () => {
-// loader.style.display = "none";
-};
 
+export const preloader = document.querySelector(".loader");
 const form = document.querySelector(".search-form");
-const preloader = document.querySelector(".loader");
 
 form.addEventListener("submit", sendForm);
 
-// loader.style.display = "none";
-
-// const showLoader = () => {
-//   loader.style.display = "flex";
-// };
 
 function sendForm(event) {
   event.preventDefault();
-  card.innerHTML = "Pfuheprf";
+  preloader.classList.remove("is-hidden")
+  card.innerHTML = "";
   const inputValue = event.target.elements.search.value.trim();
   if (inputValue !== "") {
     getImage(inputValue).then((resolve) => {
       renderImages(resolve.hits);
+      form.reset();
     }).catch((error) => {
       console.log(error);
       iziToast.error({
@@ -37,9 +31,9 @@ function sendForm(event) {
         color: '#EF4040',
         position: 'topRight',
       })
+      preloader.classList.add("is-hidden");
     });
   } else {
-    hideLoader();
     iziToast.show({
       message: 'Please complete the field!',
       theme: 'dark',
@@ -47,6 +41,7 @@ function sendForm(event) {
       color: '#EF4040',
       position: 'topRight',
     });
+    preloader.classList.add("is-hidden");
   };
 };
 

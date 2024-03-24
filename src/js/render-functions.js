@@ -3,14 +3,13 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { lightbox } from "../main";
+import { preloader } from "../main";
 
 
 export const card = document.querySelector(".gallery");
 
 export function renderImages(arr) {
-  card.innerHTML = "";
   if (arr.length === 0) {
-    hideLoader();
     iziToast.error({
       message: 'Sorry, there are no images matching your search query. Please try again!',
       theme: 'dark',
@@ -18,6 +17,7 @@ export function renderImages(arr) {
       color: '#EF4040',
       position: 'topRight',
     });
+    preloader.classList.add("is-hidden");
   } else {
     const markup = arr.map((image) => {
       return `<li class="item-image"><a class="photos-list-link" href="${image.largeImageURL}">
@@ -35,4 +35,5 @@ export function renderImages(arr) {
     card.insertAdjacentHTML("beforeend", markup);
     lightbox.refresh();
   };
+  preloader.classList.add("is-hidden")
 };

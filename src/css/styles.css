@@ -43,8 +43,8 @@
 }
 
 body {
-  /* width: 1440px;
-  height: 792px; */
+  width: 1440px;
+  height: 792px;
   background: #fff;
 }
 
@@ -114,6 +114,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 32px;
 }
 
 .item-image {
@@ -159,4 +160,9 @@ img {
   border: 1px solid #808080;
   width: 360px;
   height: 200px;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
 }
