@@ -1,12 +1,16 @@
+import { lightbox } from "../main";
+import { preloader } from "../main";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { lightbox } from "../main";
-import { preloader } from "../main";
 
 
 export const card = document.querySelector(".gallery");
+
+export function hideLoader() {
+preloader.classList.add("is-hidden")
+};
 
 export function renderImages(arr) {
   if (arr.length === 0) {
@@ -17,7 +21,7 @@ export function renderImages(arr) {
       color: '#EF4040',
       position: 'topRight',
     });
-    preloader.classList.add("is-hidden");
+    hideLoader();
   } else {
     const markup = arr.map((image) => {
       return `<li class="item-image"><a class="photos-list-link" href="${image.largeImageURL}">
@@ -35,5 +39,5 @@ export function renderImages(arr) {
     card.insertAdjacentHTML("beforeend", markup);
     lightbox.refresh();
   };
-  preloader.classList.add("is-hidden")
+  hideLoader();
 };

@@ -1,21 +1,25 @@
 import { getImage } from "./js/pixabay-api"
 import { renderImages } from "./js/render-functions";
+import { hideLoader } from "./js/render-functions";
+import { card } from "./js/render-functions";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { card } from "./js/render-functions";
 export const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 
 export const preloader = document.querySelector(".loader");
 const form = document.querySelector(".search-form");
 
-form.addEventListener("submit", sendForm);
+function showLoader() {
+  preloader.classList.remove("is-hidden")
+};
 
+form.addEventListener("submit", sendForm);
 
 function sendForm(event) {
   event.preventDefault();
-  preloader.classList.remove("is-hidden")
+  showLoader();
   card.innerHTML = "";
   const inputValue = event.target.elements.search.value.trim();
   if (inputValue !== "") {
@@ -31,7 +35,7 @@ function sendForm(event) {
         color: '#EF4040',
         position: 'topRight',
       })
-      preloader.classList.add("is-hidden");
+      hideLoader();
     });
   } else {
     iziToast.show({
@@ -41,7 +45,7 @@ function sendForm(event) {
       color: '#EF4040',
       position: 'topRight',
     });
-    preloader.classList.add("is-hidden");
+    hideLoader();
   };
 };
 
