@@ -1,6 +1,5 @@
 import { getImage } from "./js/pixabay-api"
 import { renderImages } from "./js/render-functions";
-import { hideLoader } from "./js/render-functions";
 import { card } from "./js/render-functions";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -14,6 +13,10 @@ const form = document.querySelector(".search-form");
 function showLoader() {
   preloader.classList.remove("is-hidden")
 };
+export function hideLoader() {
+preloader.classList.add("is-hidden")
+};
+
 
 form.addEventListener("submit", sendForm);
 
